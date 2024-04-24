@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv';
 dotenv.config();
 
-const addFoundObject = (req,res) =>
+const addFoundObject = async (req,res) =>
 {
     const dataToSend = req.body;
     const Authorization = req.headers["authorization"];
@@ -15,10 +15,8 @@ const addFoundObject = (req,res) =>
 
     const token = Authorization.split(" ")[1];
 
-    jwt.verify(token,process.env.JWT_SECRET_KEY, async(error) =>
-    {
-        if(error)
-        return res.status(401).json({message:"Unaurized access"})
+    
+        
 
 
         try{
@@ -41,7 +39,7 @@ const addFoundObject = (req,res) =>
             console.error(err);
             res.status(500).json({message:"Error creating found item"})
         }
-    })
+    
 
     
 }

@@ -8,11 +8,13 @@ const getImage = async(req,res) =>
 
     try
     {
-        const sql = 'select * from objects where id = 18';
+        const sql = 'select * from objects where id = 26';
         const [row] = await db.query(sql);
-        
-        console.log(row[0]);
-        res.json(row[0]);
+        const imagePath = row[0].image; // Assuming the image path is stored in the 'image' field
+        const imageUrl = `http://localhost:3002/${imagePath.replace(/\\/g, '/')}`;
+
+        console.log(imageUrl);
+        res.json(imageUrl);
     }
     catch(err)
     {

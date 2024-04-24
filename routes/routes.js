@@ -6,9 +6,6 @@ import multer from 'multer';
 
 import signup from '../controllers/userSignUpController.js';
 import login from '../controllers/userLoginController.js';
-import categoriesList from '../controllers/dropListData/categoryController.js';
-import subCategoriesList from '../controllers/dropListData/subCategoryController.js';
-import citiesList from '../controllers/dropListData/citiesController.js';
 import addFoundObject from '../controllers/objects/addFoundObjectController.js';
 import getImage from '../controllers/testing/getImage.js';
 import getPhoneByIMEI from '../controllers/phone/getphonebyIMEIController.js';
@@ -19,8 +16,13 @@ import { generateCode, registerOwnership } from '../controllers/phone/generateCo
 import addphone from '../controllers/phone/addPhoneController.js';
 import updatePhone from '../controllers/phone/updatePhoneController.js';
 import getSinglePhone from '../controllers/phone/getSinglePhoneController.js';
+
 import verifyIMEI from '../controllers/phone/verificationIMEIController.js';
 import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
+
+import getObjects from '../controllers/objects/getAllObjectsController.js';
+import { getCategories, getCities } from '../controllers/dropListData/getParametres.js';
+
 
 
 
@@ -28,11 +30,11 @@ import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
 const storage = multer.diskStorage({
     destination: function(req,file,cb)
     {
-      cb(null,'uploads/')
+      cb(null,'uploads')
     },
     filename: function(req,file,cb)
     {
-      cb(null, Date.now() + "-" + file.originalname);
+      cb(null, '/' +Date.now() + "-" + file.originalname);
     }
   })
   
@@ -46,14 +48,19 @@ const router = express.Router();
 router.post('/signUp',signup);
 router.post('/login',login);
 
-router.get('/data/categories',categoriesList);
-router.get('/data/subCategories/:category',subCategoriesList);
-router.get('/data/cities',citiesList);
+
+router.get('/data/parametres/categories',getCategories)
+router.get('/data/parametres/cities',getCities)
+
+
+
 
 
 router.post("/data/createFoundObject",upload.single('image'),addFoundObject);
 
-router.get('data/image',getImage)
+//Testing routes
+router.get('/data/image',getImage)
+
 
 
 //Phone Routes
@@ -75,6 +82,9 @@ router.post("/generateCode",generateCode);
 router.post("/buyphone",registerOwnership)
 
 
+
+//Fetching Objects
+router.get('/data/Objects',getObjects)
 
 
 
