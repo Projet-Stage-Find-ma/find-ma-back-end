@@ -33,7 +33,7 @@ const getPhoneByIMEI = async (req, res) => {
         {
             const ownerId = phoneDetails.owner;
             const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-            const dateTime = new Date().toLocaleString();
+            const dateTime = new Date();
 
             const emailQuery = "SELECT email FROM users WHERE id = ?";
             const [emailQueryResult] = await db.query(emailQuery,[ownerId]);
@@ -49,14 +49,65 @@ const getPhoneByIMEI = async (req, res) => {
                         subject: 'Your phone has been searched',
                         html: `
                             
-                            <img src="cid:unique@headerimage" style="width:100%;" />
-                            <h1>Find.ma Alert</h1>
-                            <p>Votre téléphone avec l'IMEI ${phoneIMEI} a été recherché. La recherche a été effectuée depuis l'adresse IP ${ip} le ${dateTime}.</p>
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                          <meta charset="UTF-8">
+                          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                          <title>Find.ma Alert</title>
+                          <style>
+                            /* Global Styles */
+                            body {
+                              font-family: Arial, sans-serif;
+                              background-color: #f4f4f4;
+                              margin: 0;
+                              padding: 0;
+                            }
+                            .container {
+                              max-width: 600px;
+                              margin: 20px auto;
+                              padding: 20px;
+                              background-color: #ffffff;
+                              border-radius: 10px;
+                              box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                            }
+                            h1 {
+                              color: #333333;
+                              text-align: center;
+                            }
+                            p {
+                              color: #666666;
+                              line-height: 1.6;
 
+                            }
+                            /* Button Styles */
+                            .btn {
+                              display: inline-block;
+                              background-color: #007bff;
+                              color: #ffffff;
+                              text-decoration: none;
+                              padding: 10px 20px;
+                              border-radius: 5px;
+                            }
+                            .btn:hover {
+                              background-color: #0056b3;
+                            }
+                          </style>
+                        </head>
+                        <body>
+                          <div class="container">
+                            <img src="cid:unique@headerimage" style="width:100%;" />
+                            <h1>Find.ma avertissement</h1>
+                            <p>Votre téléphone avec l'IMEI ${phoneIMEI} a été recherché. La recherche a été effectuée depuis l'adresse IP ${ip} le ${dateTime}.</p>
+                          </div>
+                        </body>
+                        </html>
+                        
+                        
                         `,
                         attachments: [{
                             filename: 'logo.png',
-                            path: 'E:/Projet-Find-ma/find-me-back-end/media/logo.png', 
+                            path: 'E:/Projet-Find-ma/find-ma-back-end/media/logo.png', 
                             cid: 'unique@headerimage'
                         }]
                     };

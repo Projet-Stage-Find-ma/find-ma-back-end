@@ -89,7 +89,7 @@ const registerOwnership = (req, res) => {
             else
             {
                 //Expiring the token
-                const UpdateTokenExpirationDate = 'UPDATE sellinglog set TokenExpirationDate = ? where token = ?';
+                const UpdateTokenExpirationDate = 'UPDATE sellinglog set TokenExpirationDate = ? where Token = ?';
                 const now = new Date();
                 const [data] = await db.query(UpdateTokenExpirationDate,[now,code]);
 

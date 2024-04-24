@@ -19,6 +19,8 @@ import { generateCode, registerOwnership } from '../controllers/phone/generateCo
 import addphone from '../controllers/phone/addPhoneController.js';
 import updatePhone from '../controllers/phone/updatePhoneController.js';
 import getSinglePhone from '../controllers/phone/getSinglePhoneController.js';
+import verifyIMEI from '../controllers/phone/verificationIMEIController.js';
+import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
 
 
 
@@ -61,6 +63,8 @@ router.get("/getphones",getphones);
 router.post("/addphone",addphone);
 router.post("/updatePhone/:id",updatePhone);
 router.get("/getSinglephone/:id",getSinglePhone)
+router.post("/verifyIMEI",verifyIMEI);
+router.post("/contacterOwner",contacterOwner)
 
 //User Routes
 router.get("/getuser",getUser)
