@@ -34,7 +34,21 @@ const getCities = async(req,res) =>
         console.error(error)
     }
 }
-export{getCategories,getCities};
+const getPhones= async(req,res)=>{
+    try{
+        const sql = 'Select label,options from parametres where ParentCategory = ?'
+        
+        const [data] = await db.query(sql,"Phones");
+
+       
+        res.json(data)
+
+    }catch(error){
+        console.error(error)
+    }
+
+}
+export{getCategories,getCities,getPhones};
 
 
 

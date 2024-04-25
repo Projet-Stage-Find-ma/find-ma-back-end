@@ -22,7 +22,7 @@ const contacterOwner=(req,res)=>{
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: ownerEmail,
-        subject: 'Your phone has been searched',
+        subject: "Quelqu'un vous a contacté concernant votre téléphone",
         html: `
             
         <!DOCTYPE html>
