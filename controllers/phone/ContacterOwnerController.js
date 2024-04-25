@@ -22,7 +22,7 @@ const contacterOwner=(req,res)=>{
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: ownerEmail,
-        subject: 'Your phone has been searched',
+        subject: 'Find.ma avertissement',
         html: `
             
         <!DOCTYPE html>
@@ -81,12 +81,12 @@ const contacterOwner=(req,res)=>{
         </html>
         
         
-        `,
-        attachments: [{
-            filename: 'logo.png',
-            path: 'E:/Projet-Find-ma/find-ma-back-end/media/logo.png', 
-            cid: 'unique@headerimage'
-        }]
+        // `,
+        // attachments: [{
+        //     filename: 'logo.png',
+        //     path: 'E:/Projet-Find-ma/find-ma-back-end/media/logo.png', 
+        //     cid: 'unique@headerimage'
+        // }]
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

@@ -22,6 +22,7 @@ import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
 
 import getObjects from '../controllers/objects/getAllObjectsController.js';
 import { getCategories, getCities } from '../controllers/dropListData/getParametres.js';
+import getItemDetails from '../controllers/objects/getItemDetails.js';
 
 
 
@@ -85,6 +86,7 @@ router.post("/buyphone",registerOwnership)
 
 //Fetching Objects
 router.get('/data/Objects',getObjects)
+router.get('/data/ObjectDetails/:id',getItemDetails)
 
 
 
