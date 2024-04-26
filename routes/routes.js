@@ -21,7 +21,8 @@ import verifyIMEI from '../controllers/phone/verificationIMEIController.js';
 import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
 
 import getObjects from '../controllers/objects/getAllObjectsController.js';
-import { getCategories, getCities,getPhones } from '../controllers/dropListData/getParametres.js';
+import { getCategories, getCities,getColors,getPhones } from '../controllers/dropListData/getParametres.js';
+import deletePhone from '../controllers/phone/deletePhoneController.js';
 
 
 
@@ -53,7 +54,7 @@ router.get('/data/parametres/categories',getCategories)
 router.get('/data/parametres/cities',getCities)
 
 router.get('/data/parametres/phones',getPhones)
-
+router.get('/data/parametres/colors',getColors)
 
 
 router.post("/data/createFoundObject",upload.single('image'),addFoundObject);
@@ -72,7 +73,7 @@ router.post("/updatePhone/:id",updatePhone);
 router.get("/getSinglephone/:id",getSinglePhone)
 router.post("/verifyIMEI",verifyIMEI);
 router.post("/contacterOwner",contacterOwner)
-
+router.delete("/deletePhone/:id",deletePhone);
 //User Routes
 router.get("/getuser",getUser)
 router.post('/updateUser',updateUser)

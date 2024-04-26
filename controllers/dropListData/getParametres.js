@@ -48,7 +48,24 @@ const getPhones= async(req,res)=>{
     }
 
 }
-export{getCategories,getCities,getPhones};
+const getColors = async(req,res) =>
+{
+    try 
+    {
+        const sql = 'Select options from parametres where label = ?';
+        const [[{options}]] = await db.query(sql,"PhoneColor");
+        
+        res.json(options);
+    }   
+    catch(error)
+    {
+        console.error(error)
+    }
+}
+
+
+
+export{getCategories,getCities,getPhones,getColors};
 
 
 
