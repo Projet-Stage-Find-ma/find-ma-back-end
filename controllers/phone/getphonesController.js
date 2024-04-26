@@ -25,16 +25,16 @@ import getUserIdFromToken from '../../function.js';
        try
        {
         const userId = await getUserIdFromToken(token); 
-        const sql = "SELECT * FROM phones WHERE owner = ?";
+        const sql = "SELECT * FROM phones WHERE owner = ? and deleted = ?";
 
-        const [row] = await db.query(sql, [userId]);
+        const [row] = await db.query(sql, [userId,false]);
 
         
         res.status(200).json({row});
        }
        catch(err)
        {
-            console.error('Error executing SQL query:', error);
+            console.error('Error executing SQL query:', err);
             return res.status(500).json({ message: 'Internal server error.' });
        }
 
