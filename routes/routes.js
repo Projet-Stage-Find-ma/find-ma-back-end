@@ -24,6 +24,7 @@ import getObjects from '../controllers/objects/getAllObjectsController.js';
 import { getCategories, getCities,getColors,getPhones } from '../controllers/dropListData/getParametres.js';
 import deletePhone from '../controllers/phone/deletePhoneController.js';
 
+import getItemDetails from '../controllers/objects/getItemDetails.js';
 
 
 
