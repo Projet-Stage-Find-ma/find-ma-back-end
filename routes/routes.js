@@ -52,7 +52,6 @@ router.post('/login',login);
 
 router.get('/data/parametres/categories',getCategories)
 router.get('/data/parametres/cities',getCities)
-
 router.get('/data/parametres/phones',getPhones)
 router.get('/data/parametres/colors',getColors)
 
@@ -86,6 +85,7 @@ router.post("/buyphone",registerOwnership)
 
 //Fetching Objects
 router.get('/data/Objects',getObjects)
+router.get('/data/ObjectDetails/:id',getItemDetails)
 
 
 

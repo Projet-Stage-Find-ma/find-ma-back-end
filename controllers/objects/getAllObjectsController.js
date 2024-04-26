@@ -9,9 +9,9 @@ dotenv.config();
 const getObjects = async(req,res) =>
 {
     try{
-        const sql = "Select * from objects";
+        const sql = "Select * from objects order by creation_date desc ";
         const [row] = await db.query(sql);
-        console.log(row);
+      
         res.status(200).json(row);
     }
     catch(error)
