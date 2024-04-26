@@ -28,6 +28,7 @@ import deleteObject from '../controllers/objects/deleteObject.js';
 import getSingleObject from '../controllers/objects/getSingleObject.js';
 
 import deletePhone from '../controllers/phone/deletePhoneController.js';
+import updateObject from '../controllers/objects/updateObject.js';
 
 
 
@@ -95,6 +96,8 @@ router.get('/data/userObjects',getUserObjects)
 
 router.delete('/deleteObject/:id',deleteObject)
 router.get('/getObjectData/:id',getSingleObject);
+
+router.post('/modifyObject/:id',upload.single('image'),updateObject)
 
 
 
