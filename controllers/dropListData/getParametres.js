@@ -10,7 +10,7 @@ const getCategories = async (req,res) =>
         
         const [data] = await db.query(sql,"Categories");
 
-        console.log(data);
+        
         res.json(data)
     }   
     catch(error)
@@ -26,7 +26,7 @@ const getCities = async(req,res) =>
     {
         const sql = 'Select options from parametres where label = ?';
         const [[{options}]] = await db.query(sql,"Cities");
-        console.log(options);
+     
         res.json(options);
     }   
     catch(error)
@@ -48,7 +48,24 @@ const getPhones= async(req,res)=>{
     }
 
 }
-export{getCategories,getCities,getPhones};
+
+
+const getPhoneColors = async (req,res) =>
+{
+    try
+    {
+        const sql = 'Select options from parametres where label = ?';
+        const[[{options}]] = await db.query(sql,'PhoneColor');
+        res.json(options)
+
+    }
+    catch(error)
+    {
+        console.log("Error fetching phone Colors");
+        console.error(error);
+    }
+}
+export{getCategories,getCities,getPhones,getPhoneColors};
 
 
 

@@ -21,7 +21,8 @@ import verifyIMEI from '../controllers/phone/verificationIMEIController.js';
 import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
 
 import getObjects from '../controllers/objects/getAllObjectsController.js';
-import { getCategories, getCities,getPhones } from '../controllers/dropListData/getParametres.js';
+import { getCategories, getCities,getPhoneColors,getPhones } from '../controllers/dropListData/getParametres.js';
+import getItemDetails from '../controllers/objects/getItemDetails.js';
 
 
 
@@ -51,8 +52,8 @@ router.post('/login',login);
 
 router.get('/data/parametres/categories',getCategories)
 router.get('/data/parametres/cities',getCities)
-
 router.get('/data/parametres/phones',getPhones)
+router.get('/data/parametres/phoneColors',getPhoneColors)
 
 
 
