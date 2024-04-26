@@ -23,6 +23,9 @@ import contacterOwner from '../controllers/phone/ContacterOwnerController.js';
 import getObjects from '../controllers/objects/getAllObjectsController.js';
 import { getCategories, getCities,getPhoneColors,getPhones } from '../controllers/dropListData/getParametres.js';
 import getItemDetails from '../controllers/objects/getItemDetails.js';
+import getUserObjects from '../controllers/objects/getUserObjectsController.js';
+import deleteObject from '../controllers/objects/deleteObject.js';
+import getSingleObject from '../controllers/objects/getSingleObject.js';
 
 
 
@@ -87,8 +90,10 @@ router.post("/buyphone",registerOwnership)
 //Fetching Objects
 router.get('/data/Objects',getObjects)
 router.get('/data/ObjectDetails/:id',getItemDetails)
+router.get('/data/userObjects',getUserObjects)
 
-
+router.delete('/deleteObject/:id',deleteObject)
+router.get('/getObjectData/:id',getSingleObject);
 
 
 
