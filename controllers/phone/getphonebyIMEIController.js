@@ -104,12 +104,12 @@ const getPhoneByIMEI = async (req, res) => {
                         </html>
                         
                         
-                        `,
-                        attachments: [{
-                            filename: 'logo.png',
-                            path: 'E:/Projet-Find-ma/find-ma-back-end/media/logo.png', 
-                            cid: 'unique@headerimage'
-                        }]
+                        // `,
+                        // attachments: [{
+                        //     filename: 'logo.png',
+                        //     path: 'E:/Projet-Find-ma/find-ma-back-end/media/logo.png', 
+                        //     cid: 'unique@headerimage'
+                        // }]
                     };
 
                     transporter.sendMail(mailOptions, (error, info) => {
